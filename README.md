@@ -92,9 +92,8 @@ $eventRequest->execute($eventA);
 
 ### Batching multiple events in a single payload
 
-You can report up to 1000 objects in one request.
-
 > [!WARNING] 
+> You can report up to 1000 objects in one request.
 > If a request contains more than 1,000 events, the entire request will be rejected.
 
 ```php
