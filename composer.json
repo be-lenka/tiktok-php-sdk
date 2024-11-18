@@ -1,0 +1,26 @@
+{
+    "name": "be-lenka/tiktok-php-sdk",
+    "description": "TikTok Events API PHP",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "tiktok",
+        "tiktok-php-sdk",
+        "tiktok-convention-api "
+    ],
+    "homepage": "https://github.com/belenka/tiktok-php-sdk",
+    "authors": [
+        {
+            "name": "Belenka Dev",
+            "email": "dev+github@belenka.com"
+        }
+    ],
+    "require": {
+        "illuminate/http": "^7.0|^8.0|^9.0|^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Belenka\\TikTok\\": "src/"
+        }
+    }
+}
