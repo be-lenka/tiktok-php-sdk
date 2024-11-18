@@ -9,7 +9,7 @@ use Belenka\TikTok\Support\HttpClient;
 /**
  * Class TikTok
  * 
- * 
+ * TikTok Ads API SDK wrapper 
  * 
  * @package Belenka\TikTok
  * @property string $accessToken
