@@ -10,9 +10,6 @@ class EventRequest
 {
     public $event_source;
 
-    /**
-     * Pixel Code
-     */
     public $event_source_id;
 
     public $http;
@@ -65,21 +62,26 @@ class EventRequest
         }
 
         try {
+            $body = [
+                'event_source' => $this->event_source,
+                'event_source_id' => $this->event_source_id,
+                'data' => $events,
+            ];
+
+            if (!empty($this->test_event_code)) {
+                $body['test_event_code'] = $this->test_event_code;
+            }
+
             $response = $this->http->post('/open_api/v1.3/event/track/', [
-                GuzzleHttp\RequestOptions::JSON => [
-                    'event_source' => $this->event_source,
-                    'event_source_id' => $this->event_source_id,
-                    //'test_event_code' => $this->test_event_code,
-                    'data' => $events,
-                ]
+                GuzzleHttp\RequestOptions::JSON => $body
             ]);
         } catch (ClientException $e) {
-            throw $e;      
+            throw $e;
         }
 
         $this->response_http_code = $response->getStatusCode();
 
-        if($this->response_http_code != 200) {
+        if ($this->response_http_code != 200) {
             throw new \Exception('Error: ' . $response->getBody());
         }
 
@@ -103,7 +105,7 @@ class EventRequest
     public function getResponseMessage()
     {
         return $this->response_message;
-    }  
+    }
 
     public function getResponseHttpCode()
     {
