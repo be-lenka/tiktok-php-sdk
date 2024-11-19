@@ -1,7 +1,6 @@
 {
     "name": "be-lenka/tiktok-php-sdk",
     "description": "TikTok Events API PHP",
-    "type": "library",
     "license": "MIT",
     "keywords": [
         "tiktok",
