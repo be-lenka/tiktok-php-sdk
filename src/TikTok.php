@@ -2,7 +2,6 @@
 
 namespace Belenka\TikTok;
 
-use Illuminate\Http\Client\PendingRequest;
 use Belenka\TikTok\Requests\EventRequest;
 use Belenka\TikTok\Support\HttpClient;
 
@@ -14,7 +13,6 @@ use Belenka\TikTok\Support\HttpClient;
  * @package Belenka\TikTok
  * @property string $accessToken
  * @property string $pixelId
- * @property PendingRequest $http
  * @property EventRequest $events
  * @method EventRequest events()
  */

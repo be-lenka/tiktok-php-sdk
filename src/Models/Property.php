@@ -22,9 +22,15 @@ class Property extends Model
      * @param  Content[]  $value
      * @return $this
      */
-    public function setContents(array $value)
+    public function setContents(array $values)
     {
-        $this->contents = $value;
+        $contents = [];
+        // filter the array from empty values before assigning it to the property
+        foreach($values as $value) {
+            $contents[] = array_filter((array)$value);
+        }
+
+        $this->contents = $contents;
 
         return $this;
     }

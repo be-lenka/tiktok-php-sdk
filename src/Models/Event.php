@@ -2,8 +2,6 @@
 
 namespace Belenka\TikTok\Models;
 
-use Belenka\TikTok\Enums\EventName;
-
 class Event extends Model
 {
     public $event;
@@ -14,7 +12,7 @@ class Event extends Model
     public $properties;
     public $page = null;
 
-    public function setEventName(EventName $value)
+    public function setEventName($value)
     {
         $this->event = $value;
 
@@ -30,7 +28,7 @@ class Event extends Model
 
     public function setEventId($value)
     {
-        $this->event_id = $value;
+        $this->event_id = strval($value);
 
         return $this;
     }

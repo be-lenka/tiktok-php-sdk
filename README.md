@@ -25,13 +25,13 @@ $user->setUserAgent($_SERVER['HTTP_USER_AGENT'])
      ->setCookieId($_COOKIE['ttp'])
      ->setExternalIds(['user-id-in-your-system']) // optional
 ;
-     
+
 // Set page info
 $page = new \Belenka\TikTok\Models\Page();
 $page->setUrl('https://example.com')
      ->setReferrer('https://example.com') // optional
 ;
-           
+
 // Set products
 $contents = [];
 $orderItems = []; // your order items list
@@ -57,10 +57,9 @@ $eventA = new \Belenka\TikTok\Models\Event();
 $eventA->setEventName(\Belenka\TikTok\Enums\EventName::COMPLETE_PAYMENT)
      ->setEventTime(time())
      ->setEventId($order->uuid)
-     ->setUser($value)
+     ->setUser($user)
      ->setPage($page)
      ->setProperties($properties)
-     ->setUser($value)
 ;
 
 // Set PlaceAnOrder event
@@ -68,10 +67,9 @@ $eventB = new \Belenka\TikTok\Models\Event();
 $eventB->setEventName(\Belenka\TikTok\Enums\EventName::PLACE_AN_ORDER)
      ->setEventTime(time())
      ->setEventId($order->uuid)
-     ->setUser($value)
+     ->setUser($user)
      ->setPage($page)
      ->setProperties($properties)
-     ->setUser($value
 ;
 ```
 
@@ -80,21 +78,32 @@ $eventB->setEventName(\Belenka\TikTok\Enums\EventName::PLACE_AN_ORDER)
 ```php
 $eventRequest = $tiktok->events()
      ->setEventSource(\Belenka\TikTok\Enums\EventSource::WEB)
-     ->setTestEventCode($testCode) // optional 
+     ->setTestEventCode($testCode) // optional
 ;
 ```
 
 ### Sending a single event
 
 ```php
-$eventRequest->execute($eventA);
+try {
+     $eventRequest->execute($eventA);
+     if ($eventRequest->isSuccessful()) {
+          echo "Result: Success";
+     }
+
+     echo "Response:";
+     $responseBody = $eventRequest->getResponseBody();
+     // ...
+} catch (\Exception $e) {
+    echo "Error: " . $e->getMessage();
+}
 ```
 
 ### Batching multiple events in a single payload
 
-> [!WARNING] 
+> [!WARNING]
 > You can report up to 1000 objects in one request.
-> If a request contains more than 1,000 events, the entire request will be rejected.
+> If a request contains more than 1000 events, the entire request will be rejected.
 
 ```php
 $eventRequest->execute([$eventA, $eventB]);
