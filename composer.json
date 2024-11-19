@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "illuminate/http": "^8"
+        "illuminate/http": "^7"
     },
     "autoload": {
         "psr-4": {
