@@ -30,7 +30,7 @@ class Model
         }
     }
 
-    public function __get(string $name)
+    public function __get($name)
     {
         echo "Getting '$name'\n";
         if (array_key_exists($name, $this->data)) {
@@ -48,7 +48,7 @@ class Model
         return null;
     }
 
-    private function getPropertyType(string $property)
+    private function getPropertyType($property)
     {
         $type = (new ReflectionProperty($this, $property))->getType();
         if ($type) {
@@ -57,7 +57,7 @@ class Model
         return null;
     }
 
-    private function isEnum(string $property)
+    private function isEnum($property)
     {
         if (! $type = $this->getPropertyType($property)) {
             return false;
@@ -66,7 +66,7 @@ class Model
         return enum_exists($type) ? $type : false;
     }
 
-    private function isModel(string $property)
+    private function isModel($property)
     {
         if (! $type = $this->getPropertyType($property)) {
             return false;

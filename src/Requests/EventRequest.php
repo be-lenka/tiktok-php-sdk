@@ -59,6 +59,17 @@ class EventRequest
         $events = is_array($events) ? $events : [$events];
         foreach ($events as $key => $event) {
             $events[$key] = $event->toArray();
+
+            // filter the array from empty values before assigning it to the property
+            foreach ($events[$key] as $k => $v) {
+                if(is_array($v)) {
+                    foreach($v as $key2 => $value) {
+                        if (empty($value)) {
+                            unset($events[$key][$k][$key2]);
+                        }
+                    }
+                }
+            }
         }
 
         try {

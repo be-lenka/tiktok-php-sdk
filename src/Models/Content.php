@@ -27,28 +27,28 @@ class Content extends Model
 
     public function setContentId($value)
     {
-        $this->content_id = $value;
+        $this->content_id = strval($value);
 
         return $this;
     }
 
     public function setContentName($value)
     {
-        $this->content_name = $value;
+        $this->content_name = strval($value);
 
         return $this;
     }
 
     public function setContentCategory($value)
     {
-        $this->content_category = $value;
+        $this->content_category = strval($value);
 
         return $this;
     }
 
     public function setBrand($value)
     {
-        $this->brand = $value;
+        $this->brand = strval($value);
 
         return $this;
     }

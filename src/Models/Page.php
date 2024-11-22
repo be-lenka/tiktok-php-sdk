@@ -21,16 +21,16 @@ class Page extends Model
      */
     public $referrer = null;
 
-    public function setUrl(string $value)
+    public function setUrl($value)
     {
-        $this->url = $value;
+        $this->url = strval($value);
 
         return $this;
     }
 
-    public function setReferrer(string $value)
+    public function setReferrer($value)
     {
-        $this->referrer = $value;
+        $this->referrer = strval($value);
 
         return $this;
     }

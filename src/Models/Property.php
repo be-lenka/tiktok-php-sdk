@@ -37,49 +37,49 @@ class Property extends Model
 
     public function setContentType($value)
     {
-        $this->content_type = $value ?? '';
+        $this->content_type = strval($value ?? '');
 
         return $this;
     }
 
     public function setCurrency($value)
     {
-        $this->currency = $value ?? '';
+        $this->currency = strval($value ?? '');
 
         return $this;
     }
 
     public function setValue($value)
     {
-        $this->value = $value ?? '';
+        $this->value = strval($value ?? '');
 
         return $this;
     }
 
     public function setQuery($value)
     {
-        $this->query = $value ?? '';
+        $this->query = strval($value ?? '');
 
         return $this;
     }
 
     public function setDescription($value)
     {
-        $this->description = $value ?? '';
+        $this->description = strval($value ?? '');
 
         return $this;
     }
 
     public function setOrderId($value)
     {
-        $this->order_id = $value ?? '';
+        $this->order_id = strval($value ?? '');
 
         return $this;
     }
 
     public function setShopId($value)
     {
-        $this->shop_id = $value ?? '';
+        $this->shop_id = strval($value ?? '');
 
         return $this;
     }

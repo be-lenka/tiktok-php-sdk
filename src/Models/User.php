@@ -36,14 +36,14 @@ class User extends Model
 
     public function setIpAddress($ip = null)
     {
-        $this->ip = $ip ?? '';
+        $this->ip = strval($ip ?? '');
 
         return $this;
     }
 
     public function setUserAgent($userAgent = null)
     {
-        $this->user_agent = $userAgent ?? '';
+        $this->user_agent = strval($userAgent ?? '');
 
         return $this;
     }
